@@ -1,1 +1,49 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Docker
+        uses: docker/login-action@v2
+        with:
+          username: sruthimallela447
+          password: 5af88563-3519-420d-ba35-e1e386f7a96c
+          
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          echo Deploying to Dev Url
+          npm install @angular/cli nx -g --quiet
+          npm install --unsafe-perm --quiet 
+          
+      - name: Build image
+        run: |
+          docker images
+          docker build . --file frontend/Dockerfile --tag ui
+          docker images 
+          
+      - name: Push image
+        run: |
+          docker tag $(docker images -q --format='{{.ID}}' | head -1) sruthimallela447/ui
+          docker push sruthimallela447/ui
 
