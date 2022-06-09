@@ -15,7 +15,7 @@ COPY ["Api/Infrastructure.Identity/Infrastructure.Identity.csproj", "Infrastruct
 COPY ["Api/Infrastructure.Persistence/Infrastructure.Persistence.csproj", "Infrastructure.Persistence/"]
 RUN dotnet restore "WebApi/WebApi.csproj"
 COPY . .
-WORKDIR "/src/WebApi"
+WORKDIR "/src"
 
 RUN dotnet build "WebApi.csproj" -c Release -o /app/build
 
