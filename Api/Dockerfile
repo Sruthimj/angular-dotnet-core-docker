@@ -13,7 +13,7 @@ COPY ["Api/Domain/Domain.csproj", "Domain/"]
 COPY ["Api/Infrastructure.Shared/Infrastructure.Shared.csproj", "Infrastructure.Shared/"]
 COPY ["Api/Infrastructure.Identity/Infrastructure.Identity.csproj", "Infrastructure.Identity/"]
 COPY ["Api/Infrastructure.Persistence/Infrastructure.Persistence.csproj", "Infrastructure.Persistence/"]
-RUN dotnet restore "Api/WebApi/WebApi.csproj"
+RUN dotnet restore "WebApi/WebApi.csproj"
 COPY . .
 WORKDIR "/src/WebApi"
 
