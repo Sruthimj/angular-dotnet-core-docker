@@ -27,7 +27,7 @@ jobs:
       - name: Build image
         run: |
           docker images
-          docker build . --file Dockerfile --tag api
+          docker build . --file Api/Dockerfile --tag api
           docker images 
           
       - name: Push image
