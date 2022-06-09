@@ -31,11 +31,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './frontend/package-lock.json'
 
-      - name: Install dependencies
-        run: |
-          echo Deploying to Dev Url
-          npm install @angular/cli nx -g --quiet
-          npm install --unsafe-perm --quiet 
+      #- name: Install dependencies
+       # run: |
+        #  echo Deploying to Dev Url
+         # npm install @angular/cli nx -g --quiet
+          #npm install --unsafe-perm --quiet 
           
       - name: Build image
         run: |
