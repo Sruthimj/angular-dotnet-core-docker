@@ -43,7 +43,7 @@ jobs:
       - name: Build image
         run: |
           docker images
-          docker build . --file frontend/Dockerfile --tag ui
+          docker build . --file Dockerfile --tag ui
           docker images 
           
       - name: Push image
